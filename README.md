@@ -6,6 +6,7 @@ This JMX Exporter also supports some connector's metrics. Check the supported co
 # How to use
 ## For `cp-kafka-connect` [helm chart](https://github.com/confluentinc/cp-helm-charts/tree/master/charts/cp-kafka-connect)
 - Overrides the `prometheus.jmx.image` and `prometheus.jmx.imageTag`
+- Replace the `jmx-configmap.yaml`
 
 
 ## For others
@@ -15,9 +16,13 @@ This JMX Exporter also supports some connector's metrics. Check the supported co
 docker build -f Dockerfile .
 ```
 
-
 # Supported connector list
 1. `mongodb/kafka-connect-mongodb`
 2. `debezium/debezium-connector-mongodb`
 3. `debezium/debezium-connector-postgresql`
 4. `debezium/debezium-connector-mysql`
+
+
+# Prerequisite
+- Prometheus
+  - scrape_interval <= 30s

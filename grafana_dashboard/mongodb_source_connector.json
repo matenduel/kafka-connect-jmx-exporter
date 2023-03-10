@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 49891,
+  "id": 2,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -313,7 +313,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "rate(com_mongodb_kafka_connect_source_task_metrics_in_task_poll_duration_ms{}[2m])",
+          "expr": "rate(com_mongodb_kafka_connect_source_task_metrics_in_task_poll_duration_ms{}[1m])",
           "legendFormat": "{{task}}",
           "range": true,
           "refId": "A"
@@ -502,7 +502,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "rate(com_mongodb_kafka_connect_source_task_metrics_in_connect_framework_duration_ms{}[2m])",
+          "expr": "rate(com_mongodb_kafka_connect_source_task_metrics_in_connect_framework_duration_ms{}[1m])",
           "legendFormat": "{{task}}",
           "range": true,
           "refId": "A"
@@ -594,7 +594,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "rate(com_mongodb_kafka_connect_source_task_metrics_records{}[2m])",
+          "expr": "rate(com_mongodb_kafka_connect_source_task_metrics_records{}[1m])",
           "legendFormat": "{{task}}",
           "range": true,
           "refId": "A"
@@ -685,8 +685,8 @@
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "editorMode": "builder",
-          "expr": "increase(com_mongodb_kafka_connect_source_task_metrics_records[2m]) - increase(com_mongodb_kafka_connect_source_task_metrics_records_filtered[2m]) - increase(com_mongodb_kafka_connect_source_task_metrics_records_acknowledged[2m])",
+          "editorMode": "code",
+          "expr": "increase(com_mongodb_kafka_connect_source_task_metrics_records[1m]) - increase(com_mongodb_kafka_connect_source_task_metrics_records_filtered[1m]) - increase(com_mongodb_kafka_connect_source_task_metrics_records_acknowledged[1m])",
           "legendFormat": "{{task}}",
           "range": true,
           "refId": "A"
@@ -779,7 +779,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "rate(com_mongodb_kafka_connect_source_task_metrics_mongodb_bytes_read{}[2m])",
+          "expr": "rate(com_mongodb_kafka_connect_source_task_metrics_mongodb_bytes_read{}[1m])",
           "legendFormat": "{{task}}",
           "range": true,
           "refId": "A"
@@ -872,22 +872,10 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "rate(com_mongodb_kafka_connect_source_task_metrics_mongodb_bytes_read{}[2m]) / rate(com_mongodb_kafka_connect_source_task_metrics_records{}[2m])",
+          "expr": "rate(com_mongodb_kafka_connect_source_task_metrics_mongodb_bytes_read{}[1m]) / rate(com_mongodb_kafka_connect_source_task_metrics_records{}[1m])",
           "legendFormat": "{{task}}",
           "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "code",
-          "expr": "",
-          "hide": false,
-          "legendFormat": "{{task}}",
-          "range": true,
-          "refId": "B"
         }
       ],
       "title": "average message size",
@@ -897,12 +885,15 @@
   "refresh": false,
   "schemaVersion": 37,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "Kafka",
+    "Connect"
+  ],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-2d",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {
@@ -920,6 +911,6 @@
   "timezone": "",
   "title": "MongoDB Kafka Connect Dashboard",
   "uid": "HZZUH_14z",
-  "version": 9,
+  "version": 2,
   "weekStart": ""
 }
